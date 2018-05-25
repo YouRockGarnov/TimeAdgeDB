@@ -1,5 +1,4 @@
 
---doubtful REQUESTS
 
 SELECT Event.*, Task.Name, Tracking.BeginingTime, Tracking.EndTime
 FROM Event
@@ -34,3 +33,19 @@ WHERE Tracking.BeginingTime >= "2017-04-17 10:00:00" AND Tracking.EndTime <= "20
 SELECT DISTINCT Question.Question
 FROM Question
 INNER JOIN UserAnswer UA ON Question.QuestionID = UA.Question AND UA.DataTime <= "2018-05-17 10:00:00"
+
+SELECT Place.Geolocation
+FROM Event AS EVENT
+--INNER JOIN Tracking Track ON EVENT.Account == Track.Account
+INNER JOIN Place ON Place == Place.PlaceID
+WHERE EVENT.Account == 2 AND Place.Geolocation IS NOT NULL;
+
+SELECT Place.Geolocation
+FROM Tracking AS TRACK
+--INNER JOIN Tracking Track ON EVENT.Account == Track.Account
+INNER JOIN Place ON Place == Place.PlaceID
+WHERE TRACK.Account == 1 AND Place.Geolocation IS NOT NULL;
+
+SELECT Idea.Account
+FROM Idea
+WHERE Account == 1
